@@ -12,6 +12,10 @@ import All_Craft from './components/All_Craft/All_Craft.jsx';
 import Add_Craft from './components/Add_Craft/Add_Craft.jsx';
 import List_Craft from './components/List_Craft/List_Craft.jsx';
 import Error from './Error/Error.jsx';
+import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
+import SignUp from './components/SignUp/SignUp.jsx';
+import Login from './components/Login/Login.jsx';
+import PrivateRoute from './Route/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,11 +33,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/add",
-        element: <Add_Craft></Add_Craft>,
+        element: <PrivateRoute><Add_Craft></Add_Craft></PrivateRoute>,
       },
       {
         path: "/list",
-        element: <List_Craft></List_Craft>,
+        element: <PrivateRoute><List_Craft></List_Craft></PrivateRoute>,
+      },
+      {
+        path: "/signup",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
       }
     ]
   }
@@ -41,6 +53,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
