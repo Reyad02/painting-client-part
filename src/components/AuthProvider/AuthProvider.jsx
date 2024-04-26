@@ -30,6 +30,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUset);
             setLoading(false);
             console.log("Current User", currentUset);
+            // console.log(currentUset.email)
         });
 
         return (()=>{unSubscribe()}

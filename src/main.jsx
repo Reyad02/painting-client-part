@@ -16,6 +16,7 @@ import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
 import SignUp from './components/SignUp/SignUp.jsx';
 import Login from './components/Login/Login.jsx';
 import PrivateRoute from './Route/PrivateRoute.jsx';
+import CraftDetails from './components/CraftDetails/CraftDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,12 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
-      }
+      },
+      {
+        path: "/:id",
+        element: <CraftDetails></CraftDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`),
+      },
     ]
   }
 ]);
