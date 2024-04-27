@@ -10,13 +10,14 @@ import Root from './Root/Root.jsx';
 import Home from './components/Home/Home.jsx';
 import All_Craft from './components/All_Craft/All_Craft.jsx';
 import Add_Craft from './components/Add_Craft/Add_Craft.jsx';
-import List_Craft from './components/List_Craft/List_Craft.jsx';
+import List_Craft from './components/List_Craft_Card/List_Craft_Card.jsx';
 import Error from './Error/Error.jsx';
 import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
 import SignUp from './components/SignUp/SignUp.jsx';
 import Login from './components/Login/Login.jsx';
 import PrivateRoute from './Route/PrivateRoute.jsx';
 import CraftDetails from './components/CraftDetails/CraftDetails.jsx';
+import MyCrafts from './components/MyCrafts/MyCrafts.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/list",
-        element: <PrivateRoute><List_Craft></List_Craft></PrivateRoute>,
+        element: <PrivateRoute><MyCrafts></MyCrafts></PrivateRoute>,
+        loader: ()=>fetch('http://localhost:5000/crafts/'),
       },
       {
         path: "/signup",
