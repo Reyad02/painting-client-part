@@ -18,7 +18,7 @@ const Craft_Section = () => {
     return (
         <div className="grid grid-cols-3 gap-4">
             {
-                crafts.slice(0,3).map(craft => <CardCraft key={craft._id} craft={craft}></CardCraft>)
+                crafts.slice(0,6).map(craft => <CardCraft key={craft._id} craft={craft}></CardCraft>)
             }
         </div>
     );
