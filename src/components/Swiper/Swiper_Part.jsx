@@ -23,7 +23,7 @@ const Swiper_Part = () => {
                 className="mySwiper h-[90vh]"
             >
                 <SwiperSlide>
-                    <div className="hero h-[100vh] lg:h-[90vh]" style={{ backgroundImage: 'url(https://i.postimg.cc/Hk3dMCnV/1.jpg)' }}>
+                    <div className=" hero h-[100vh] lg:h-[90vh]" style={{ backgroundImage: 'url(https://i.postimg.cc/Hk3dMCnV/1.jpg)' }}>
                         <div className="hero-overlay bg-opacity-45 "></div>
                         {/* <div className="hero-overlay opacity-50 "></div> */}
                         <div className="hero-content text-[#08184B] text-center ">
