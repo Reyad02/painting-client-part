@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import Swal from "sweetalert2";
 
 
 
@@ -20,7 +21,9 @@ const Login = () => {
         login(email, pass).then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
-            console.log(user)
+            // console.log(user)
+
+
             navigate(location?.state ? location.state : "/")
             // ...
         })
@@ -28,6 +31,11 @@ const Login = () => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorMessage);
+                Swal.fire({
+                    title: "Error",
+                    text: "Wrong Email or Password",
+                    icon: "error"
+                });
                 // ..
             });
     }
@@ -59,12 +67,12 @@ const Login = () => {
             // This gives you a GitHub Access Token. You can use it to access the GitHub API.
             const credential = GithubAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
-        
+
             // The signed-in user info.
             const user = result.user;
             // IdP data available using getAdditionalUserInfo(result)
             // ...
-          }).catch((error) => {
+        }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -74,7 +82,7 @@ const Login = () => {
             // The AuthCredential type that was used.
             const credential = GithubAuthProvider.credentialFromError(error);
             // ...
-          });
+        });
     }
     return (
         <div className="hero pt-8 bg-base-200">
