@@ -1,14 +1,13 @@
-import { Link, NavLink, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const All_Craft = () => {
     const allCrafts = useLoaderData();
     const { _id, photo, item_name, subcategory_Name, description, Price, rating, customization, processing_time, stockStatus, Email, Name } = allCrafts;
 
     return (
-        <div>
+        <div className="mx-auto max-w-7xl">
             <div className="overflow-x-auto">
                 <table className="table">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -19,7 +18,6 @@ const All_Craft = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
                         {
                             allCrafts.map(craft => 
                             <tr key={craft._id}>

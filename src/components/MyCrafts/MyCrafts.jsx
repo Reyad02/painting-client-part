@@ -8,12 +8,8 @@ const MyCrafts = () => {
     const allCrafts = useLoaderData();
     const [toatlCrafts, setAllCrafts] = useState(allCrafts.filter(craft => craft.Email === user.email))
 
-    // const filteredMyList = allCrafts.filter(craft => craft.Email === user.email)
-
     return (
-        <div className="grid grid-cols-3 gap-4">
-            {/* {filteredMyList.length} */}
-
+        <div className="grid grid-cols-3 gap-10 mx-auto max-w-7xl">
             {
                 toatlCrafts.map(craft => <List_Craft_Card key={craft._id} craft={craft} setAllCrafts={setAllCrafts} toatlCrafts={toatlCrafts}></List_Craft_Card>)
             }
