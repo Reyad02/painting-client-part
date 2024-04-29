@@ -21,6 +21,11 @@ const Login = () => {
         login(email, pass).then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
+            Swal.fire({
+                title: "Successfully logged in ",
+                // text: "You clicked the button!",
+                icon: "success"
+              });
             // console.log(user)
 
 

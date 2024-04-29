@@ -18,6 +18,7 @@ import Login from './components/Login/Login.jsx';
 import PrivateRoute from './Route/PrivateRoute.jsx';
 import CraftDetails from './components/CraftDetails/CraftDetails.jsx';
 import MyCrafts from './components/MyCrafts/MyCrafts.jsx';
+import SubCategoryItems from './components/SubCategoryItems/SubCategoryItems.jsx';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
         path: "/:id",
         element: <PrivateRoute><CraftDetails></CraftDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`),
+      },
+      {
+        path: "/sub-category/:sub_category",
+        element: <SubCategoryItems></SubCategoryItems>,
+        loader: ({ params }) => fetch(`http://localhost:5000/subCategory/${params.sub_category}`),
       },
     ]
   }

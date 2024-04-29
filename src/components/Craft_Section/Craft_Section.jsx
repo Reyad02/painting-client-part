@@ -16,11 +16,14 @@ const Craft_Section = () => {
     }, [user])
 
     return (
-        <div className="grid grid-cols-3 gap-4">
-            {
-                crafts.slice(0,6).map(craft => <CardCraft key={craft._id} craft={craft}></CardCraft>)
-            }
-        </div>
+        <>
+            <h1 className="text-center text-5xl mt-16 font-semibold">Craft Items</h1>
+            <div className="grid grid-cols-3 gap-4 mx-auto max-w-7xl mt-8">
+                {
+                    crafts.slice(0, 6).map(craft => <CardCraft key={craft._id} craft={craft}></CardCraft>)
+                }
+            </div>
+        </>
     );
 };
 

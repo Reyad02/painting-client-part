@@ -20,7 +20,12 @@ const SignUp = () => {
             const user = userCredential.user;
             user.displayName = displayName;
             user.photoURL = photoURL;
+            Swal.fire({
+                title: "Successfully registered ",
+                icon: "success"
+              });
             navigate(location?.state ? location.state : "/")
+
 
 
         })

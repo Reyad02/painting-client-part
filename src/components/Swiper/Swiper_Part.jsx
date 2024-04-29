@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Navigation, Pagination } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 const Swiper_Part = () => {
     // const swiper = new Swiper(...);
     return (
@@ -30,7 +31,7 @@ const Swiper_Part = () => {
                             <div className="max-w-lg">
                                 <h1 className="mb-5 text-6xl font-semibold ">Less Promises More Creativity</h1>
                                 <p className="mb-5 text-xl font-semibold ">Explore our curated selection of premium arts tailored to your needs.</p>
-                                {/* <button className="btn btn-primary">Get Started</button> */}
+                                <Link to={"/all"}><button className="btn btn-primary">View Details</button> </Link>
                             </div>
                         </div>
                     </div>
@@ -44,7 +45,7 @@ const Swiper_Part = () => {
                             <div className="max-w-lg">
                                 <h1 className="mb-5 text-6xl font-semibold pt-8">What rhymes Art? It's craft</h1>
                                 <p className="mb-5 text-xl font-semibold ">Discover new arts that inspire creativity and make everyday pleasure.</p>
-                                {/* <button className="btn btn-primary">Get Started</button> */}
+                                <Link to={"/all"}><button className="btn btn-primary">View Details</button> </Link>
                             </div>
                         </div>
                     </div>
@@ -58,7 +59,7 @@ const Swiper_Part = () => {
                             <div className="max-w-lg">
                                 <h1 className="mb-5 text-6xl font-semibold">Amazing Art and Craft</h1>
                                 <p className="mb-5 text-xl font-semibold">Explore more crafts and arts to make life beautiful</p>
-                                {/* <button className="btn btn-primary">Get Started</button> */}
+                                <Link to={"/all"}><button className="btn btn-primary">View Details</button> </Link>
                             </div>
                         </div>
                     </div>
