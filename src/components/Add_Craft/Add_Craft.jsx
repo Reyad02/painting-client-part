@@ -30,7 +30,7 @@ const Add_Craft = () => {
             })
     }
     return (
-        <div className="">
+        <div className="mx-auto max-w-7xl">
             <form onSubmit={handleSubmit}>
                 <div className=" flex flex-col ">
                     <label htmlFor="photoURL">Photo URL: </label>
