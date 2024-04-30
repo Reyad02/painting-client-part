@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Tooltip } from 'react-tooltip'
@@ -6,12 +6,24 @@ import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
+    const [emailLink, setEmailLink] = useState("");
+    
+    useEffect(() => {
+        if (user) {
+            setEmailLink(`/list/email/${user.email}`);
+        } else {
+            setEmailLink("/login");
+        }
+    }, [user]);
+
+
     const navPart = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/all">Art & craft Items</NavLink></li>
         <li><NavLink to="/add">Add craft</NavLink></li>
-        <li><NavLink to={`/list/email/${user.email}`}>Art & CraftList</NavLink></li>
+        <li><NavLink to={emailLink}>Art & CraftList</NavLink></li>
     </>
+
 
     const handleLogout = () => {
         logout().then(() => {

@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
-    const { signUp } = useContext(AuthContext);
+    const { signUp, profileUpdate } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const handleSignup = e => {
@@ -14,27 +15,46 @@ const SignUp = () => {
         const pass = form.pass.value;
         const photoURL = form.photo.value;
         const displayName = form.name.value;
-        console.log(email, pass);
-        signUp(email, pass).then((userCredential) => {
-            // Signed up 
-            const user = userCredential.user;
-            user.displayName = displayName;
-            user.photoURL = photoURL;
+        // console.log(email, pass);
+        const isValidPassword = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (isValidPassword.test(pass)) {
+
+            signUp(email, pass).then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                profileUpdate(displayName, photoURL)
+                    .then(() => {
+                        // Profile updated!
+                        // ...
+                    }).catch((error) => {
+                        // An error occurred
+                        // ...
+                        console.log(error)
+                    });
+                user.displayName = displayName;
+                user.photoURL = photoURL;
+
+                Swal.fire({
+                    title: "Successfully registered ",
+                    icon: "success"
+                });
+                navigate(location?.state ? location.state : "/")
+
+
+
+            })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorMessage);
+                    // ..
+                });
+        } else {
             Swal.fire({
-                title: "Successfully registered ",
-                icon: "success"
-              });
-            navigate(location?.state ? location.state : "/")
-
-
-
-        })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
-                // ..
+                title: "Use more strong password",
+                icon: "error"
             });
+        }
 
     }
     return (

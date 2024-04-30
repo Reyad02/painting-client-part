@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Add_Craft = () => {
+    const { user } = useContext(AuthContext);
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
@@ -12,8 +15,8 @@ const Add_Craft = () => {
         const customization = form.customization.value;
         const processing_time = form.processing_time.value;
         const stockStatus = form.stockStatus.value;
-        const Email = form.Email.value;
-        const Name = form.Name.value;
+        const Email = user.email;
+        const Name = user.displayName;
         console.log(photo, item_name, subcategory_Name, description, Price, rating, customization, processing_time, stockStatus, Email, Name);
         const newData = { photo, item_name, subcategory_Name, description, Price, rating, customization, processing_time, stockStatus, Email, Name };
 
@@ -70,11 +73,11 @@ const Add_Craft = () => {
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="Email">Email: </label>
-                    <input className="w-full md:w-11/12 lg:w-5/6" type="text" name="Email" id="Email" />
+                    <input placeholder={user.email} className="w-full md:w-11/12 lg:w-5/6" type="text" name="Email" id="Email" disabled />
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="Name">Name: </label>
-                    <input className="w-full md:w-11/12 lg:w-5/6" type="text" name="Name" id="Name" />
+                    <input placeholder={user.displayName} className="w-full md:w-11/12 lg:w-5/6" type="text" name="Name" id="Name" disabled />
                 </div>
                 <div>
                     <input className="btn" type="submit" value="Add" />
