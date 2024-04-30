@@ -9,7 +9,7 @@ const SubCategoryItems = () => {
     const [subCategoriesCard, setSubCategoriesCard] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/crafts/sub_category/${sub_category}`)
+        fetch(`https://art-and-craft-server-five.vercel.app/crafts/sub_category/${sub_category}`)
             .then(res => res.json())
             .then(data => setSubCategoriesCard(data));
     }, [sub_category])

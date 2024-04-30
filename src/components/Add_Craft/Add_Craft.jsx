@@ -25,7 +25,7 @@ const Add_Craft = () => {
         console.log(photo, item_name, subcategory_Name, description, Price, rating, customization, processing_time, stockStatus, Email, Name);
         const newData = { photo, item_name, subcategory_Name, description, Price, rating, customization, processing_time, stockStatus, Email, Name };
 
-        fetch("http://localhost:5000/crafts", {
+        fetch("https://art-and-craft-server-five.vercel.app/crafts", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -46,15 +46,15 @@ const Add_Craft = () => {
             <form onSubmit={handleSubmit} className="mx-auto md:pl-10 p-2">
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="photoURL">Photo URL: </label>
-                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full " type="text" name="photo" id="photoURL" />
+                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full border border-blue-400" type="text" name="photo" id="photoURL" />
                 </div>
                 <div className=" flex flex-col gap-1">
                     <label htmlFor="item_name">Name: </label>
-                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full" type="text" name="item_name" id="item_name" />
+                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full border border-blue-400" type="text" name="item_name" id="item_name" />
                 </div>
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="subcategory_Name">Subcategory Name: </label>
-                    <select className="select select-bordered w-full max-w-xs select-sm " name="subcategory_Name">
+                    <select className="select select-bordered w-full max-w-xs select-sm border border-blue-400" name="subcategory_Name">
                         <option disabled selected>Choose a subcategory</option>
                         {subCategories.map(subcategory => (
                             <option key={subcategory._id} value={subcategory.sub_category}>{subcategory.sub_category}</option>
@@ -63,15 +63,15 @@ const Add_Craft = () => {
                 </div>
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="description">Description: </label>
-                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full" type="text" name="description" id="description" />
+                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full border border-blue-400" type="text" name="description" id="description" />
                 </div>
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="Price">Price: </label>
-                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full" type="text" name="Price" id="Price" />
+                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full border border-blue-400" type="text" name="Price" id="Price" />
                 </div>
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="rating">Rating: </label>
-                    <select className="select select-bordered w-full max-w-xs select-sm " name="rating" defaultValue={5}>
+                    <select className="select select-bordered w-full max-w-xs select-sm border border-blue-400" name="rating" defaultValue={5}>
                         <option value={5}>5</option>
                         <option value={4}>4</option>
                         <option value={3}>3</option>
@@ -82,7 +82,7 @@ const Add_Craft = () => {
                 <div className="flex gap-10 items-center ">
                     <label>Customization:</label>
                     <div className="flex items-center gap-2">
-                        <input type="radio" id="customizationYes" name="customization" value="Yes" />
+                        <input className="border border-blue-400" type="radio" id="customizationYes" name="customization" value="Yes" />
                         <label htmlFor="customizationYes">Yes</label>
                     </div>
                     <div className="flex items-center gap-2">
@@ -93,19 +93,19 @@ const Add_Craft = () => {
 
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="processing_time">Processing Time: </label>
-                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full" type="text" name="processing_time" id="processing_time" />
+                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full border border-blue-400" type="text" name="processing_time" id="processing_time" />
                 </div>
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="stockStatus">Stock Status: </label>
-                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full" type="text" name="stockStatus" id="stockStatus" />
+                    <input className="w-full md:w-11/12 lg:w-5/6 rounded-full border border-blue-400" type="text" name="stockStatus" id="stockStatus" />
                 </div>
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="Email">Email: </label>
-                    <input placeholder={user.email} className="w-full md:w-11/12 lg:w-5/6 rounded-full" type="text" name="Email" id="Email" disabled />
+                    <input placeholder={user.email} className="w-full md:w-11/12 lg:w-5/6 rounded-full border border-blue-400 pl-2" type="text" name="Email" id="Email" disabled />
                 </div>
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="Name">Name: </label>
-                    <input placeholder={user.displayName} className="w-full md:w-11/12 lg:w-5/6 rounded-full" type="text" name="Name" id="Name" disabled />
+                    <input placeholder={user.displayName} className="w-full md:w-11/12 lg:w-5/6 rounded-full border border-blue-400" type="text" name="Name" id="Name" disabled />
                 </div>
                 <div className="mt-4 flex items-center justify-center">
                     <input className="btn" type="submit" value="Add" />

@@ -18,7 +18,7 @@ const UpdateCraft = () => {
         } else {
             setEmailLink("/");
         }
-        fetch('http://localhost:5000/subCategory/')
+        fetch('https://art-and-craft-server-five.vercel.app/subCategory/')
             .then(res => res.json())
             .then(data => setAllSubCategories(data));
     }, [user])
@@ -39,7 +39,7 @@ const UpdateCraft = () => {
         const Name = form.Name.value;
         const newData = { photo, item_name, subcategory_Name, description, Price, rating, customization, processing_time, stockStatus, Email, Name };
 
-        fetch(`http://localhost:5000/crafts/${_id}`, {
+        fetch(`https://art-and-craft-server-five.vercel.app/crafts/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,14 +67,14 @@ const UpdateCraft = () => {
             <form onSubmit={handleUpdate} className="space-y-2">
                 <div className=" flex flex-col ">
                     <label htmlFor="photoURL">Photo URL: </label>
-                    <input defaultValue={photo} className="w-full md:w-11/12 lg:w-5/6" type="text" name="photo" id="photoURL" />
+                    <input defaultValue={photo} className="w-full md:w-11/12 lg:w-5/6 border border-blue-400" type="text" name="photo" id="photoURL" />
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="item_name">Name: </label>
-                    <input defaultValue={item_name} className="w-full md:w-11/12 lg:w-5/6" type="text" name="item_name" id="item_name" />
+                    <input defaultValue={item_name} className="w-full md:w-11/12 lg:w-5/6 border border-blue-400" type="text" name="item_name" id="item_name" />
                 </div>
                 <div className="flex flex-col">
-                    <select className="select select-bordered w-full max-w-xs select-sm" name="subcategory_Name" defaultValue={subcategory_Name}>
+                    <select className="select select-bordered w-full max-w-xs select-sm border border-blue-400" name="subcategory_Name" defaultValue={subcategory_Name}>
                         {allSubCategories.map(subcategory => (
                             <option key={subcategory._id} value={subcategory.sub_category} selected={subcategory.sub_category === subcategory_Name}>
                                 {subcategory.sub_category}
@@ -84,15 +84,15 @@ const UpdateCraft = () => {
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="description">Description: </label>
-                    <input defaultValue={description} className="w-full md:w-11/12 lg:w-5/6" type="text" name="description" id="description" />
+                    <input defaultValue={description} className="w-full md:w-11/12 lg:w-5/6 border border-blue-400" type="text" name="description" id="description" />
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="Price">Price: </label>
-                    <input defaultValue={Price} className="w-full md:w-11/12 lg:w-5/6" type="text" name="Price" id="Price" />
+                    <input defaultValue={Price} className="w-full md:w-11/12 lg:w-5/6 border border-blue-400" type="text" name="Price" id="Price" />
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="rating">Rating: </label>
-                    <select className="select select-bordered w-full max-w-xs select-sm" name="rating" defaultValue={rating}>
+                    <select className="select select-bordered w-full max-w-xs select-sm border border-blue-400" name="rating" defaultValue={rating}>
                         <option value={5}>5</option>
                         <option value={4}>4</option>
                         <option value={3}>3</option>
@@ -113,19 +113,19 @@ const UpdateCraft = () => {
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="processing_time">Processing Time: </label>
-                    <input defaultValue={processing_time} className="w-full md:w-11/12 lg:w-5/6" type="text" name="processing_time" id="processing_time" />
+                    <input defaultValue={processing_time} className="w-full md:w-11/12 lg:w-5/6 border border-blue-400" type="text" name="processing_time" id="processing_time" />
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="stockStatus">Stock Status: </label>
-                    <input defaultValue={stockStatus} className="w-full md:w-11/12 lg:w-5/6" type="text" name="stockStatus" id="stockStatus" />
+                    <input defaultValue={stockStatus} className="w-full md:w-11/12 lg:w-5/6 border border-blue-400" type="text" name="stockStatus" id="stockStatus" />
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="Email">Email: </label>
-                    <input defaultValue={Email} className="w-full md:w-11/12 lg:w-5/6" type="text" name="Email" id="Email" />
+                    <input defaultValue={Email} className="w-full md:w-11/12 lg:w-5/6 border border-blue-400" type="text" name="Email" id="Email" />
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="Name">Name: </label>
-                    <input defaultValue={Name} className="w-full md:w-11/12 lg:w-5/6" type="text" name="Name" id="Name" />
+                    <input defaultValue={Name} className="w-full md:w-11/12 lg:w-5/6 border border-blue-400" type="text" name="Name" id="Name" />
                 </div>
                 <div>
                     <input className="btn" type="submit" value="Update" />

@@ -34,17 +34,17 @@ const router = createBrowserRouter([
       {
         path: "/all",
         element: <All_Craft></All_Craft>,
-        loader: () => fetch('http://localhost:5000/crafts/'),
+        loader: () => fetch('https://art-and-craft-server-five.vercel.app/crafts/'),
       },
       {
         path: "/add",
         element: <PrivateRoute><Add_Craft></Add_Craft></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/subCategory/'),
+        loader: () => fetch('https://art-and-craft-server-five.vercel.app/subCategory/'),
       },
       {
         path: "/list/email/:email",
         element: <PrivateRoute><MyCrafts></MyCrafts></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/crafts/email/${params.email}`),
+        loader: ({ params }) => fetch(`https://art-and-craft-server-five.vercel.app/crafts/email/${params.email}`),
       },
       {
         path: "/signup",
@@ -57,17 +57,17 @@ const router = createBrowserRouter([
       {
         path: "/:id",
         element: <PrivateRoute><CraftDetails></CraftDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`),
+        loader: ({ params }) => fetch(`https://art-and-craft-server-five.vercel.app/crafts/${params.id}`),
       },
       {
         path: "/sub-category/:sub_category",
         element: <SubCategoryItems></SubCategoryItems>,
-        loader: ({ params }) => fetch(`http://localhost:5000/subCategory/${params.sub_category}`),
+        loader: ({ params }) => fetch(`https://art-and-craft-server-five.vercel.app/subCategory/${params.sub_category}`),
       },
       {
         path: "/update/:id",
         element: <PrivateRoute><UpdateCraft></UpdateCraft></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`),
+        loader: ({ params }) => fetch(`https://art-and-craft-server-five.vercel.app/crafts/${params.id}`),
       },
     ]
   }

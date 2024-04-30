@@ -15,7 +15,7 @@ const List_Craft_Card = ({ craft, toatlCrafts, setAllCrafts }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/crafts/${id}`, {
+                fetch(`https://art-and-craft-server-five.vercel.app/crafts/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

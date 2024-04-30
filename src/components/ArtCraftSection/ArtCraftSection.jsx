@@ -4,7 +4,7 @@ import CategoryCard from "../CategoryCard/CategoryCard";
 const ArtCraftSection = () => {
     const [subCategories, setSubCategories] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/subCategory')
+        fetch('https://art-and-craft-server-five.vercel.app/subCategory')
             .then(res => res.json())
             .then(data => {
                 setSubCategories(data)
