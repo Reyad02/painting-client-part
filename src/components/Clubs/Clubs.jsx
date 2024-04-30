@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Clubs = () => {
     return (
         <div className='mx-auto max-w-7xl mt-16'>
-            <div className='flex justify-center items-center gap-10'>
+            <div className='flex flex-col md:flex-row justify-center items-center gap-10'>
                 <div className='flex-1 space-y-10 justify-center items-center text-center'>
                     <div className=' mx-auto '>
                         <img src="https://i.postimg.cc/vBSsXLPC/images-1.jpg" className='block mx-auto' alt="" />

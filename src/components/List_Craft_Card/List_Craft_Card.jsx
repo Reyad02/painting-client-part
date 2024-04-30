@@ -37,8 +37,8 @@ const List_Craft_Card = ({ craft, toatlCrafts, setAllCrafts }) => {
 
     return (
         <>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure className='h-80'><img src={photo} className='object-cover h-full w-full' alt="Shoes" /></figure>
+            <div className="card card-compact w-full md:w-96 bg-base-100 shadow-xl">
+                <figure className='md:h-80'><img src={photo} className='object-cover md:h-full md:w-full' alt="Shoes" /></figure>
                 <div className="card-body ">
                     <div className="badge badge-primary">{subcategory_Name}</div>
                     <h2 className="card-title">{item_name}</h2>

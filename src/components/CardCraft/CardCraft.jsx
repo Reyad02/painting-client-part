@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CardCraft = ({ craft }) => {
     const { _id, photo, item_name, subcategory_Name, description, Price, rating, customization, processing_time, stockStatus, Email, Name } = craft;
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        <div className="card card-compact w-full md:w-96 bg-base-100 shadow-xl">
             <figure className='h-80'><img src={photo} className='object-cover h-full w-full' alt="Art" /></figure>
             <div className="card-body ">
                 <div className="badge badge-primary">{subcategory_Name}</div>

@@ -30,14 +30,14 @@ const MyCrafts = () => {
                 <p>Customization: </p>
                 <div className="dropdown dropdown-bottom">
                     <div tabIndex={0} role="button" className="btn m-1">Neutral</div>
-                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box md:w-52">
                         <li><a onClick={() => handleFilterChange("Neutral")}>Neutral</a></li>
                         <li><a onClick={() => handleFilterChange("Yes")}>Yes</a></li>
                         <li><a onClick={() => handleFilterChange("No")}>No</a></li>
                     </ul>
                 </div>
             </div>
-            <div className="grid grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     toatlCrafts.map(craft => <List_Craft_Card key={craft._id} craft={craft} setAllCrafts={setAllCrafts} toatlCrafts={toatlCrafts}></List_Craft_Card>)
                 }

@@ -38,7 +38,7 @@ const Add_Craft = () => {
     }
     return (
         <div className="mx-auto max-w-7xl ">
-            <form onSubmit={handleSubmit} className="mx-auto pl-10">
+            <form onSubmit={handleSubmit} className="mx-auto md:pl-10 p-2">
                 <div className=" flex flex-col gap-1 ">
                     <label htmlFor="photoURL">Photo URL: </label>
                     <input className="w-full md:w-11/12 lg:w-5/6 rounded-full " type="text" name="photo" id="photoURL" />
