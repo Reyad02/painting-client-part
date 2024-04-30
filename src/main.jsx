@@ -34,16 +34,17 @@ const router = createBrowserRouter([
       {
         path: "/all",
         element: <All_Craft></All_Craft>,
-        loader: ()=>fetch('http://localhost:5000/crafts/'),
+        loader: () => fetch('http://localhost:5000/crafts/'),
       },
       {
         path: "/add",
         element: <PrivateRoute><Add_Craft></Add_Craft></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/subCategory/'),
       },
       {
         path: "/list/email/:email",
         element: <PrivateRoute><MyCrafts></MyCrafts></PrivateRoute>,
-        loader: ({params})=>fetch(`http://localhost:5000/crafts/email/${params.email}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/crafts/email/${params.email}`),
       },
       {
         path: "/signup",

@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Navigate, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const UpdateCraft = () => {
     const lodedCardData = useLoaderData();
+    const { user } = useContext(AuthContext);
     const { _id, photo, item_name, subcategory_Name, description, Price, rating, customization, processing_time, stockStatus, Email, Name } = lodedCardData;
     const [updated, setUpdated] = useState(false);
+    const [allSubCategories, setAllSubCategories] = useState([]);
+    const [emailLink, setEmailLink] = useState("");
+
+
+    useEffect(() => {
+        if (user) {
+            setEmailLink(`/list/email/${user.email}`);
+        } else {
+            setEmailLink("/");
+        }
+        fetch('http://localhost:5000/subCategory/')
+            .then(res => res.json())
+            .then(data => setAllSubCategories(data));
+    }, [user])
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -44,7 +60,7 @@ const UpdateCraft = () => {
             })
     }
     if (updated) {
-        return <Navigate to={"/list"} />;
+        return <Navigate to={emailLink} />;
     }
     return (
         <div className="mx-auto max-w-7xl">
@@ -57,9 +73,14 @@ const UpdateCraft = () => {
                     <label htmlFor="item_name">Name: </label>
                     <input defaultValue={item_name} className="w-full md:w-11/12 lg:w-5/6" type="text" name="item_name" id="item_name" />
                 </div>
-                <div className=" flex flex-col ">
-                    <label htmlFor="subcategory_Name">Subcategory Name: </label>
-                    <input defaultValue={subcategory_Name} className="w-full md:w-11/12 lg:w-5/6" type="text" name="subcategory_Name" id="subcategory_Name" />
+                <div className="flex flex-col">
+                    <select className="select select-bordered w-full max-w-xs select-sm" name="subcategory_Name" defaultValue={subcategory_Name}>
+                        {allSubCategories.map(subcategory => (
+                            <option key={subcategory._id} value={subcategory.sub_category} selected={subcategory.sub_category === subcategory_Name}>
+                                {subcategory.sub_category}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="description">Description: </label>
@@ -71,11 +92,24 @@ const UpdateCraft = () => {
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="rating">Rating: </label>
-                    <input defaultValue={rating} className="w-full md:w-11/12 lg:w-5/6" type="text" name="rating" id="rating" />
+                    <select className="select select-bordered w-full max-w-xs select-sm" name="rating" defaultValue={rating}>
+                        <option value={5}>5</option>
+                        <option value={4}>4</option>
+                        <option value={3}>3</option>
+                        <option value={2}>2</option>
+                        <option value={1}>1</option>
+                    </select>
                 </div>
-                <div className=" flex flex-col ">
-                    <label htmlFor="customization">Customization: </label>
-                    <input defaultValue={customization} className="w-full md:w-11/12 lg:w-5/6" type="text" name="customization" id="customization" />
+                <div className="flex gap-10 items-center">
+                    <label>Customization:</label>
+                    <div className="flex items-center gap-2">
+                        <input type="radio" id="customizationYes" name="customization" value="Yes" defaultChecked={customization === "Yes"} />
+                        <label htmlFor="customizationYes">Yes</label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <input type="radio" id="customizationNo" name="customization" value="No" defaultChecked={customization === "No"} />
+                        <label htmlFor="customizationNo">No</label>
+                    </div>
                 </div>
                 <div className=" flex flex-col ">
                     <label htmlFor="processing_time">Processing Time: </label>
