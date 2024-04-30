@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Add_Craft = () => {
     const { user } = useContext(AuthContext);
@@ -32,7 +33,11 @@ const Add_Craft = () => {
             body: JSON.stringify(newData),
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log(data);
+                Swal.fire({
+                    title: "Successfully added ",
+                    icon: "success"
+                });
                 form.reset();
             })
     }
