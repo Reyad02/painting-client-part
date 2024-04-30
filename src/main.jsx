@@ -41,9 +41,9 @@ const router = createBrowserRouter([
         element: <PrivateRoute><Add_Craft></Add_Craft></PrivateRoute>,
       },
       {
-        path: "/list",
+        path: "/list/email/:email",
         element: <PrivateRoute><MyCrafts></MyCrafts></PrivateRoute>,
-        loader: ()=>fetch('http://localhost:5000/crafts/'),
+        loader: ({params})=>fetch(`http://localhost:5000/crafts/email/${params.email}`),
       },
       {
         path: "/signup",
