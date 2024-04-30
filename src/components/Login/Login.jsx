@@ -25,7 +25,7 @@ const Login = () => {
                 title: "Successfully logged in ",
                 // text: "You clicked the button!",
                 icon: "success"
-              });
+            });
             // console.log(user)
 
 
@@ -52,6 +52,15 @@ const Login = () => {
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
+            Swal.fire({
+                title: "Successfully logged in ",
+                // text: "You clicked the button!",
+                icon: "success"
+            });
+            // console.log(user)
+
+
+            navigate(location?.state ? location.state : "/")
             // IdP data available using getAdditionalUserInfo(result)
             // ...
         }).catch((error) => {
@@ -75,6 +84,15 @@ const Login = () => {
 
             // The signed-in user info.
             const user = result.user;
+            Swal.fire({
+                title: "Successfully logged in ",
+                // text: "You clicked the button!",
+                icon: "success"
+            });
+            // console.log(user)
+
+
+            navigate(location?.state ? location.state : "/")
             // IdP data available using getAdditionalUserInfo(result)
             // ...
         }).catch((error) => {
